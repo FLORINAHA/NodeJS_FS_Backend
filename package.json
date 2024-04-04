@@ -1,0 +1,25 @@
+{
+  "name": "nodejs_fs_backend",
+  "version": "1.0.0",
+  "description": "NodeJS Rest API Backend Service",
+  "main": "server.js",
+  "scripts": {
+    "test": "jtest --coverage",
+    "start": "nodemon server"
+  },
+  "keywords": [
+    "NodeJS",
+    "RestAPI",
+    "service"
+  ],
+  "author": "Florina Hategan",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jtest": "^0.0.1",
+    "nodemon": "^3.1.0"
+  }
+}
