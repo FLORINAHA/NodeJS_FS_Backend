@@ -1,6 +1,8 @@
 const express = require ("express");
 const cors = require('cors');
 const userRouter = require('../router/userRouter');
+const {connect} = require('../db/db');
+
 const app = express();
 //use middleware to form our contract for incoming json payloads ONLY!!
 app.use(express.json());
@@ -25,7 +27,7 @@ error.status = 404;
 next(error);
 });
 app.use((error, req, res, next)=>{
-    res.status(error.status||500).json({
+    res.status(error.status || 500).json({
 error:{
    message:error.message,
    status: error.status,
@@ -33,6 +35,7 @@ error:{
 });
 });
 
+connect();
 
 module.exports = app;
 

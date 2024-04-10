@@ -9,35 +9,35 @@ firstName: {
 },
 LastName:{
     type: String,
-    requied: true,
+    required: true,
 },
 adress:{
     type: String,
-    requied: true,
+    required: true,
 },
 city:{
     type: String,
-    requied: true,
+    required: true,
 },
 
 state : {
     type: String,
     required: true,
 },
-zipCode :{
+zipCode : {
     type: String,
-    requied: true,
+    required: true,
 },
-email:{
+email: {
     type: String,
-    requied: true,
+    required: true,
 },
-password:{
+password: {
     type: String,
-    requied: true,
+    required: true,
 },
 })
-module.exports = mongoose.model("User", userSchema)
+module.exports = mongoose.model('User', userSchema);
 
 
 
