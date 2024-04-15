@@ -27,7 +27,7 @@ describe('User Test Suite', () => {
 
     expect(user.firstName).toEqual('Florina');
     expect(user.lastName).toEqual('Hat');
-    expect(user.address).toEqual('Street'); // Corrected property name
+    expect(user.adress).toEqual('Street'); // Corrected property name
     expect(user.city).toEqual('Timisoara');
     expect(user.state).toEqual('TM');
     expect(user.zipCode).toEqual('123456');
