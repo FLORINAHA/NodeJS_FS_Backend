@@ -2,20 +2,17 @@ const { connect, disconnect, saveUser, findUser } = require('./db');
 const User = require('../models/userModel');
 const mongoose = require('mongoose');
 
+beforeAll(async () => {
+  await connect();
+});
+
 describe('User Test Suite', () => {
-  beforeEach(async () => {
-    await connect(); // Establish connection before each test
-  });
-
-  afterEach(async () => {
-    await disconnect(); // Disconnect after each test
-  });
-
   test('As a user I want to save a user to the database', async () => {
     const newUser = new User({
-      firstName: 'Florina', // Remove unnecessary _id assignment
+      _id: new mongoose.Types.ObjectId(),
+      firstName: 'Florina',
       lastName: 'Hat',
-      adress: 'Street',
+      address: 'Street',
       city: 'Timisoara',
       state: 'TM',
       zipCode: '123456',
@@ -24,14 +21,19 @@ describe('User Test Suite', () => {
     });
 
     const user = await saveUser(newUser);
-
     expect(user.firstName).toEqual('Florina');
     expect(user.lastName).toEqual('Hat');
-    expect(user.adress).toEqual('Street'); // Corrected property name
+    expect(user.address).toEqual('Street');
     expect(user.city).toEqual('Timisoara');
     expect(user.state).toEqual('TM');
     expect(user.zipCode).toEqual('123456');
     expect(user.email).toEqual('florina@yahoo.com');
     expect(user.password).toEqual('123');
   });
+  //write another test
+
+});
+
+afterAll(async () => {
+  await disconnect();
 });
