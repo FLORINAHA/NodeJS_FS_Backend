@@ -13,15 +13,19 @@ const disconnect = async () => {
 };
 
 const findUser = async (obj) => {
-    console.log(obj);
-  return User.findOne(obj).exec(); 
+    return User.findOne(obj).exec(); 
 };
 
 const saveUser = async (newUser) => {
-   return await newUser.save(); 
-
+    try {
+       
+        newUser._id = new mongoose.Types.ObjectId();
+        return await newUser.save();
+    } catch (error) {
+        console.error('Error saving user:', error);
+        throw error; 
+    }
 };
-
 
 module.exports = { connect, disconnect, findUser, saveUser };
 

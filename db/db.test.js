@@ -30,9 +30,23 @@ describe('User Test Suite', () => {
     expect(user.email).toEqual('florina@yahoo.com');
     expect(user.password).toEqual('123');
   });
+
   //write another test
+test ('As a user I want to find a user by any property',async()=>{
+const obj = {firstName: 'Florina'};
+await findUser(obj)
+.then((user) => {
+  console.log(user);
+  expect(user.fistName).toBe('Florina');
+})
+.catch(err =>{
+console.log('Error'+ err.message);
+});
+
 
 });
+});
+
 
 afterAll(async () => {
   await disconnect();
