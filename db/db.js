@@ -4,12 +4,10 @@ const User = require('../models/userModel');
 
 
 const connect = async () => {
-    try {
-        await mongoose.connect(process.env.mongo);
-        console.log('MongoDB is up and running');
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
-    }
+await mongoose.connect(process.env.mongo);
+console.log('MongoDB is up and running');
+
+
 };
 
 const disconnect = async () => {
@@ -18,11 +16,12 @@ const disconnect = async () => {
 
 //obj {firstName: req.body.firstName, email: req.body.email}
 const findUser = async (obj) => {
-    User.findOne(obj);
+    User.findOne(obj).exect();
 };
 
 const saveUser = async (newuser) => {
     try {
+        newuser._id = mongoose.Types.ObjectId();
         return await newuser.save();
     } catch (error) {
         console.error('Error saving user:', error);
