@@ -12,18 +12,23 @@ const disconnect = async () => {
 };
 
 const findUser = async (obj) => {
-    return User.findOne(obj).exec(); // Am corectat și eroarea de scriere a metodei exec()
+    return User.findOne(obj).exec(); 
 };
 
 const saveUser = async (newUser) => {
     try {
-        // Generăm un _id manual pentru utilizator
+       
         newUser._id = new mongoose.Types.ObjectId();
         return await newUser.save();
     } catch (error) {
         console.error('Error saving user:', error);
-        throw error;
+        throw error; 
     }
 };
 
 module.exports = { connect, disconnect, findUser, saveUser };
+
+
+
+
+
